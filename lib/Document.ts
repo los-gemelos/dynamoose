@@ -357,7 +357,7 @@ Document.objectFromSchema = async function (object: any, model: Model<Document>,
 		}
 	};
 	utils.object.entries(returnObject).filter((item) => item[1] !== undefined && item[1] !== dynamooseUndefined).map(checkTypeFunction);
-	// keysToDelete.reverse().forEach((key) => utils.object.delete(returnObject, key));
+	keysToDelete.reverse().forEach((key) => utils.object.delete(returnObject, key));
 
 	if (settings.defaults || settings.forceDefault) {
 		await Promise.all((await Document.attributesWithSchema(returnObject, model)).map(async (key) => {
